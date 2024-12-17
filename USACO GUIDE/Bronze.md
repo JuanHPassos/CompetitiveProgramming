@@ -134,10 +134,102 @@ pq.push(número) -> adiciona elemento.
 pq.top() -> retorna frente da fila
 pq.pop() -> remove frente da fila.
 
+# Set
 
+### Set não ordenado
 
+Guarda elemento em O(1) usando hashing.
 
+Declaração:
+unordered_set<int> set;
 
+Inserção:
+set.insert(1); // Insere elemento 1.
+
+Verifica se elemento está no set:
+set.count(1); // Retorna true ou false.
+
+Remoção:
+set.count(0);
+
+### Set ordenado
+Ocorre todas as operações em $O(\log (n))$.
+Operções adicionais:
+
+- Retorna ponteiro para o elemento maior ou igual ao elemento passado como argumento
+set.upper_bound(7); 
+
+- Retorna ponteiro para o elemento maior ao buscado 
+set.upper_bound(7);
+
+- Retorna ponteiro para primeira posição do set.
+set.begin();
+
+- Retorna ponteiro para uma posição após o ultimo elemento do set.
+-  Ponteiro para o ultimo elemento é (--(set.end()));
+set.end();
+
+- Apaga elemento do set em que o ponteiro está apontando.
+set.erase(set.upper_bound(6));
+
+# Maps
+
+Possui map ordenado e não ordenado.
+
+### Unordered map
+
+Implementado por meio de uma tabela hash e tem custo constante.
+
+```cpp
+unordered_map<int, int> m;
+m[1] = 5; // [(1, 5)]
+m[3] = 14; // [(1, 5); (3, 14)]
+m[2] = 7; // [(1, 5); (3, 14); (2, 7)]
+m.erase(2); // [(1, 5); (3, 14)]
+cout << m[1] << '\n'; // 5
+cout << m.count(7) << '\n' ; // 0
+cout << m.count(1) << '\n' ; // 1
+```
+
+### Ordered Maps
+
+Implementado com uma árvore, possui operações em log n.
+
+```cpp
+ map<int, int> m;
+ m[3] = 5; // [(3, 5)]
+ m[11] = 4; // [(3, 5); (11, 4)]
+ m[10] = 491; // [(3, 5); (10, 491); (11, 4)]
+ cout << m.lower_bound(10)->first << ""<< m.lower_bound(10)->second << '\n';
+// Printa 10 491
+ cout << m.upper_bound(10)->first << ""<< m.upper_bound(10)->second << '\n';
+// Printa 11 4
+ m.erase(11); // [(3, 5); (10, 491)]
+ if (m.upper_bound(10) == m.end())
+ {
+ cout << "end" << endl; // Prints end
+ }
+```
+
+### Multisets
+
+É um set que permite repetição, tem custo O(log n + f) sendo f o número de elementos repetidos de um determinado valor.
+
+Declaração:
+multiset<int> ms;
+
+Inserção:
+ms.insert(1);
+
+Busca:
+Retorna quantidade desse elemento no conjunto.
+ms.count(1);
+
+Remoção:
+Remova todos os 1 do conjunto.
+ms.erase(1);
+Remove apenas aonde o ponteiro aponta
+ms.erase(ms.find(1))
 
 
 
